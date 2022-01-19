@@ -77,6 +77,11 @@ cmp $CHEZMOISOURCEDIR/dot_file golden/dot_file
 chezmoi add --force $HOME/.file
 cmp $CHEZMOISOURCEDIR/dot_file golden/edited_dot_file
 
+chhome home5/user
+
+# test that chezmoi add adds directories when the directory name includes a trailing slash when the directory already exists
+chezmoi add $HOME/.dir/
+
 -- golden/edited_dot_file --
 # contents of .file
 # edited
@@ -90,3 +95,6 @@ cmp $CHEZMOISOURCEDIR/dot_file golden/edited_dot_file
 # contents of .dir/ignore
 -- home4/user/.file --
 # contents of .file
+-- home5/user/.dir/file --
+# contents of .dir/file
+-- home4/user/.local/share/chezmoi/dot_dir/.keep --
